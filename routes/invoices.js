@@ -57,6 +57,7 @@ router.put('/:id', async (req, res, next) => {
         let paidDate = null;
 
         const currRes = await db.query(`SELECT paid FROM invoices WHERE id=$1`, [id]);
+        
         if (currRes.rows.length === 0) {
             throw new ExpressError(`Can't update invoice with id of ${id}`, 404); 
         }
